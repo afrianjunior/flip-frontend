@@ -10,6 +10,8 @@ import UISelect from './UISelect'
 import UIFlexBox from './UIFlexBox'
 import UICard from './UICard'
 import UILabel from './UILabel'
+import UIContentBox from './UIContentBox'
+import UIButton from './UIButton'
 
 export {
   Layout,
@@ -23,5 +25,7 @@ export {
   UISelect,
   UIFlexBox,
   UICard,
-  UILabel
+  UILabel,
+  UIContentBox,
+  UIButton
 }

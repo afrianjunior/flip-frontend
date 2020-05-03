@@ -11,7 +11,7 @@
     "last 2 versions"
   ],
   "scripts": {
-    "start": "node server.js",
+    "start": "node static-host.js",
     "dev": "webpack-dev-server --config webpack.development",
     "prebuild": "rimraf ./dist",
     "build": "NODE_ENV=production webpack --config webpack.production",
@@ -61,7 +61,6 @@
     "express": "^4.16.3",
     "font-awesome": "^4.7.0",
     "js-cookie": "^2.2.1",
-    "query-string": "^6.10.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-form": "^4.0.1",

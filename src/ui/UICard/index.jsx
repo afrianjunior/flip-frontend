@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import './UICardStyles.css'
+
 const colors = ['orange', 'green']
 
 function UICard ({ children, color }) {

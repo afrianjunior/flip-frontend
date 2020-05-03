@@ -1,0 +1,23 @@
+.ui-button {
+  padding: .4em .7em;
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--text-color);
+  border-radius: var(--rounded);
+  outline: none;
+  cursor: pointer;
+}
+
+.ui-button:focus {
+  outline: none;
+}
+
+.ui-button_orange {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.ui-button_green {
+  color: var(--color-secondary);
+  border-color: var(--color-secondary);
+}

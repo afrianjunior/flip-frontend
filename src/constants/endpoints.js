@@ -1,1 +1,1 @@
-export const TRANSACTIONS = 'frontend-test'
+export const TRANSACTIONS = 'frontend-test.json'

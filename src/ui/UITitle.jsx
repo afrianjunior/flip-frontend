@@ -4,7 +4,7 @@ import { UIText } from 'ui'
 
 function UITitle ({ children }) {
   return (
-    <UIText tag="h1" weight="lite" size="title" align="center" className="ui-title">
+    <UIText tag="h1" weight="lite" size="xxl" align="center" className="ui-title">
       { children }
     </UIText>
   )

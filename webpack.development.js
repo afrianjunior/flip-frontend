@@ -6,7 +6,7 @@ module.exports = merge(common, {
   mode: 'development',
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
-    port: process.env.PORT || 4000,
+    port: process.env.PORT || 3000,
     compress: true,
     historyApiFallback: true
   }

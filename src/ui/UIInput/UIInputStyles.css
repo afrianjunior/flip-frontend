@@ -1,0 +1,36 @@
+.ui-input-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid var(--color-gray);
+  border-top-right-radius: 0;
+  border-top-left-radius: var(--rounded);
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: var(--rounded);
+}
+
+.ui-input {
+  display: block;
+  width: inherit;
+  border: 0;
+  outline: 0;
+  margin: .7em 2em .7em 3em;
+}
+
+.ui-input:focus {
+  outline: none;
+}
+
+.ui-input-icon {
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-color);
+  opacity: .7;
+}

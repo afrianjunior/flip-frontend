@@ -14,10 +14,12 @@ COPY --from=build /app/package.json package.json
 COPY --from=build /app/yarn.lock yarn.lock
 COPY --from=build /app/.env .env
 COPY --from=build /app/dist dist
-COPY --from=build /app/server.js server.js
+COPY --from=build /app/static-host.js static-host.js
 
 RUN yarn install --production
 
 ENV NODE_ENV="production"
 
-CMD ["node", "server.js"]
+EXPOSE 3000
+
+CMD ["node", "static-host.js"]

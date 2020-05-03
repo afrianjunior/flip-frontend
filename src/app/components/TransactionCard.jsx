@@ -3,19 +3,10 @@ import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight, faCircle } from '@fortawesome/free-solid-svg-icons'
 import { UIText, UIFlexBox, UICard, UILabel } from 'ui'
+
+import TransactionLabel from './TransactionLabel'
 import { toRupiah, dateFormat } from '@/lib/utils'
-
-import lang from '@/lang/id-ID.json'
-
-const _COLOR_DECISION = {
-  success: 'green',
-  pending: 'orange'
-}
-
-const _LABEL_TYPE_DECISION = {
-  success: 'normal',
-  pending: 'plain'
-}
+import { _COLOR_DECISION, _LABEL_TYPE_DECISION } from '@/constants/common'
 
 function TransactionCard ({ transaction }) {
   const senderBank = transaction.sender_bank.toUpperCase()
@@ -23,35 +14,30 @@ function TransactionCard ({ transaction }) {
   const beneficiaryName = transaction.beneficiary_name.toUpperCase()
   const amount = toRupiah(transaction.amount)
   const status = transaction.status.toLowerCase()
-  const createdDate = transaction.created_at
-  const completedDate = transaction.completed_at
-  const date = status === 'success' ? dateFormat(completedDate) : dateFormat(createdDate)
+  const completedDate = dateFormat(transaction.completed_at)
 
-  const labelType = _LABEL_TYPE_DECISION[status]
   const colorOriented = _COLOR_DECISION[status]
 
   return (
     <UICard color={colorOriented}>
       <UIFlexBox justify="between">
         <div>
-          <UIText tag="p" weight="bold">
+          <UIText tag="div" weight="bold" className="margin-bottom_sm">
             <UIFlexBox justify="none">
               {senderBank} <UIText tag="span" size="sm" className="margin-left_sm margin-right_sm"><FontAwesomeIcon icon={faArrowRight} /></UIText> {beneficiaryBank}
             </UIFlexBox>
           </UIText>
-          <UIText tag="p">
+          <UIText tag="div" className="margin-bottom_sm">
             {beneficiaryName}
           </UIText>
-          <UIText tag="p">
+          <UIText tag="div" className="margin-bottom_sm">
             <UIFlexBox justify="none">
-              {amount} <UIText tag="div" size="xs" className="margin-left_lg margin-right_lg"><FontAwesomeIcon icon={faCircle} /></UIText> {date}
+              {amount} <UIText tag="span" size="xs" className="margin-left_lg margin-right_lg"><FontAwesomeIcon icon={faCircle} /></UIText> {completedDate}
             </UIFlexBox>
           </UIText>
         </div>
         <div>
-          <UILabel type={labelType} color={colorOriented}>
-            {lang[status]}
-          </UILabel>
+          <TransactionLabel label={status} />
         </div>
       </UIFlexBox>
     </UICard>

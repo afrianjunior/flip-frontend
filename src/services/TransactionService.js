@@ -1,4 +1,4 @@
-import { TRANSACTION } from '@/constants/endpoints'
+import { TRANSACTIONS } from '@/constants/endpoints'
 
 export default class JobService {
   constructor (httpService) {
@@ -7,7 +7,7 @@ export default class JobService {
 
   async getTransactions () {
     try {
-      const { data } = await this._http.get(TRANSACTION)
+      const { data } = await this._http.get(TRANSACTIONS)
 
       return data
     } catch (error) {

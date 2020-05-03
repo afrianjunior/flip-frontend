@@ -3,25 +3,32 @@ import { transactionService } from '@/services'
 import { FETCH_TRANSACTIONS, FETCH_DETAILS_TRANSACTION } from './types'
 
 export default {
-
-  [FETCH_TRANSACTIONS]: async () => {
-    const { data } = await transactionService.getTransactions()
-
+  [FETCH_TRANSACTIONS]: async (dispatch) => {
+    const response = await transactionService.getTransactions()
+    const transactionData = Object.entries(response).map(([_, transaction]) => transaction)
     dispatch({
       type: FETCH_TRANSACTIONS,
-      data: data
+      data: transactionData
     })
 
-    return data
+    return transactionData
   },
 
-  [FETCH_DETAILS_TRANSACTION]: async (payload, dispatch) => {
-    const response = await transactionService.getDetailsTransaction(payload)
+  [FETCH_DETAILS_TRANSACTION]: async (id, transactions, dispatch) => {
+    if (!transactions.length) {
+      const response = await transactionService.getTransactions()
+      const transactionData = Object.entries(response).map(([_, transaction]) => transaction)
+      dispatch({
+        type: FETCH_TRANSACTIONS,
+        data: transactionData
+      })
+    }
 
     dispatch({
       type: FETCH_DETAILS_TRANSACTION,
-      data: response
+      data: id
     })
-    return response
+
+    return id
   }
 }

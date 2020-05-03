@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
+import './UISelectStyles.css'
+
 function Options ({ collections, changeHandler }) {
-  // return collections.map(({ value, label }) => <option key={value} value={value}>{label}</option>)
   const optionsNode = collections.map(collection => {
     return (
       <button
@@ -33,9 +34,6 @@ function UISelect (props) {
 
   return (
     <div className="ui-select-wrapper" onClick={openSelectHandler}>
-      {/* <select {...props}>
-        <Options {...props} />
-      </select> */}
       <div className={`ui-select ${opened ? 'opened' : ''}`}>
         <div className="ui-select-body">
           {selectedCollection.label}

@@ -1,11 +1,27 @@
 import React, { useReducer, useContext } from 'react'
 import { node } from 'prop-types'
-// import {
-//   NEXT_STEP,
-//   PREV_STEP
-// } from '@/actions/createJobAction/types'
+import {
+  FETCH_TRANSACTIONS,
+  FETCH_DETAILS_TRANSACTION
+} from '@/actions/mainAction/types'
 
-const INITIAL_STATE = {}
+const INITIAL_STATE = {
+  transactions: [],
+  transaction: {
+    id: 'FT13634',
+    amount: 4331285,
+    unique_code: 452,
+    status: 'SUCCESS',
+    sender_bank: 'bni',
+    account_number: '6470264356',
+    beneficiary_name: 'Hal Matthams',
+    beneficiary_bank: 'bri',
+    remark: 'sample remark',
+    created_at: '2020-05-01 14:57:57',
+    completed_at: '2020-05-01 14:57:57',
+    fee: 0
+  }
+}
 
 const MainContext = React.createContext()
 
@@ -16,24 +32,20 @@ const useMainReducer = (reducer, defaultState) => {
 const Mutations = (state, action) => {
   const { data } = action
   return {
-    // [NEXT_STEP]: () => {
-    //   const { currentStep } = state
-    //   const nextStep = currentStep + 1
-    //   return {
-    //     ...state,
-    //     currentStep: nextStep,
-    //     step: STEPS[nextStep]
-    //   }
-    // },
-    // [PREV_STEP]: () => {
-    //   const { currentStep } = state
-    //   const prevStep = currentStep - 1
-    //   return {
-    //     ...state,
-    //     currentStep: prevStep,
-    //     step: STEPS[prevStep]
-    //   }
-    // }
+    [FETCH_TRANSACTIONS]: () => {
+      return {
+        ...state,
+        transactions: data
+      }
+    },
+    [FETCH_DETAILS_TRANSACTION]: () => {
+      const { transactions } = state
+      const transaction = transactions.find(transaction => transaction.id === data)
+      return {
+        ...state,
+        transaction
+      }
+    }
   }
 }
 

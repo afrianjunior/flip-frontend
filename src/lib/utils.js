@@ -1,21 +1,34 @@
-export function isArray (value) {
-  return value instanceof Array || Object.prototype.toString.call(value) === '[object Array]'
-}
+export function sortAlphabeticallyByKey (data, direction, key) {
+  const _DIRECTION_TYPES = [1, -1]
+  if (!_DIRECTION_TYPES.includes(direction)) throw Error(`lib sortAlphabeticallyByKey: direction ${direction} not allowed`)
 
-export function isObject (value) {
-  return value && value.toString() === '[object Object]'
-}
+  let result = data.map(item => ({ ...item }))
 
-export function isObjectEmpty (value) {
-  return !Object.keys(value).length
-}
+  for (let item = result.length - 1; item >= 0; item--) {
+    for (let anotherItem = 1; anotherItem <= item; anotherItem++) {
+      let swapper = null
+      let firstValue = result[anotherItem - 1][key]
+      let secondValue = result[anotherItem][key]
 
-export function isUndefined (value) {
-  return value === void 0
-}
+      if (direction === _DIRECTION_TYPES[0]) {
+        if (firstValue > secondValue) {
+          swapper = result[anotherItem - 1]
+          result[anotherItem - 1] = result[anotherItem]
+          result[anotherItem] = swapper
+        }
+      }
 
-export function isNumber (value) {
-  return typeof value === 'number' || Object.prototype.toString.call(value) === '[object Number]'
+      if (direction === _DIRECTION_TYPES[1]) {
+        if (firstValue < secondValue) {
+          swapper = result[anotherItem]
+          result[anotherItem] = result[anotherItem - 1]
+          result[anotherItem - 1] = swapper
+        }
+      }
+    }
+  }
+
+  return result
 }
 
 export function toRupiah (num) {

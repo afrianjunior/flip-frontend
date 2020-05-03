@@ -1,0 +1,25 @@
+.ui-label {
+  padding: .3em .6em;
+  border-radius: var(--rounded);
+}
+
+.ui-label_normal {
+  border: 1px solid var(--color-primary);
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.ui-label_plain {
+  border: 1px solid var(--color-primary);
+  background-color: #fff !important;
+}
+
+.ui-label_color-orange {
+  border: 1px solid var(--color-primary);
+  background-color: var(--color-primary);
+}
+
+.ui-label_color-green {
+  border: 1px solid var(--color-secondary);
+  background-color: var(--color-secondary);
+}

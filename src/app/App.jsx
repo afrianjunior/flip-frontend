@@ -1,5 +1,4 @@
 import React, { Suspense } from 'react'
-import qs from 'query-string'
 import { Layout, Container } from 'ui'
 import { BrowserRouter as Router, Switch, Route, withRouter } from 'react-router-dom'
 
@@ -16,9 +15,7 @@ export const PublicRoute = props => {
   )
 }
 
-const AppStackRoute = withRouter(({ history, location }) => {
-  location.searchParse = qs.parse(location.search)
-  window.directTo = history
+const AppStackRoute = withRouter(() => {
   return (
     <React.Fragment>
       <Suspense fallback={<div>Loading</div>}>

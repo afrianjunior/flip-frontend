@@ -1,0 +1,14 @@
+.ui-card {
+  background-color: #fff;
+  padding: .5em .9em;
+  border-radius: var(--rounded);
+  border-left: 5px solid var(--color-gray);
+}
+
+.ui-card_orange {
+  border-color: var(--color-primary);
+}
+
+.ui-card_green {
+  border-color: var(--color-secondary);
+}
